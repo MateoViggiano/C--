@@ -1,0 +1,34 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Compile C code",
+            "type": "shell",
+            "command": "(F:\\tcc\\tcc.exe ${file} -o ${fileBasenameNoExtension}.exe) ;  (Write-Host \"Tiempo de ejecucion: (Measure-Command {.\\${fileBasenameNoExtension}.exe | Out-Default}).TotalMilliseconds ms\") ; ( Write-Host \"Codigo: $LASTEXITCODE\" )",
+            "group": "build"
+        },
+        {
+            "type": "cppbuild",
+            "label": "C/C++: gcc.exe compilar archivo activo",
+            "command": "C:\\msys64\\mingw64\\bin\\gcc.exe",
+            "args": [
+                "-fdiagnostics-color=always",
+                "-g",
+                "${file}",
+                "-o",
+                "${fileDirname}\\${fileBasenameNoExtension}.exe"
+            ],
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "detail": "Tarea generada por el depurador."
+        }
+    ]
+}
